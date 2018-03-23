@@ -113,11 +113,11 @@ function uploadImage(req,res){
     var file_ext = ext_split[1];
 
     if(file_ext == 'png'||file_ext == 'jpg'||file_ext == 'gif'){
-      User.findByIdAndUpdate(userId,{image:file_name},(err,userUpdated)=>{
+      User.findByIdAndUpdate(userId,{image: file_name},(err,userUpdated)=>{
         if(!userUpdated){
           res.status(404).send({message: "No se ha podido actualizar el usuario"});
         }else{
-          res.status(200).send({image:file_name,user:userUpdated});
+          res.status(200).send({image: file_name,user:userUpdated});
         }
       });
     }else{
