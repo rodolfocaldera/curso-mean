@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {UserEditComponent} from "./components/user-edit.component";
 import {ArtistListComponent} from "./components/artist-list.component";
 import {ArtistAddComponent} from "./components/artist-add.component";
+import {ArtistEditComponent} from "./components/artist-edit.component";
 import {HomeComponent} from "./components/home.component";
 
 @NgModule({
@@ -15,7 +16,8 @@ import {HomeComponent} from "./components/home.component";
     UserEditComponent,
     ArtistListComponent,
     HomeComponent,
-    ArtistAddComponent
+    ArtistAddComponent,
+    ArtistEditComponent
   ],
   imports: [
     BrowserModule,
