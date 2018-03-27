@@ -51,11 +51,12 @@ function getArtists(req,res){
     var page = 1;
   }
 
-  var itemsPerPage=3;
+  var itemsPerPage=4;
 
   Artist.find().sort('name').paginate(page,itemsPerPage,function(err, artists, total){
     if(err){
-      res.status(500).send({message:"Error en la peticion"});
+      res.status(500).send({message:"Error en la peticion: "+err});
+
     }else{
       if(!artists){
         res.status(404).send({message:"No hay artistas"});
