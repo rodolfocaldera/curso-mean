@@ -2,12 +2,13 @@ import {Component,OnInit} from '@angular/core';
 import { Router,ActivatedRoute, Params} from "@angular/router";
 import {GLOBAL} from "../services/global";
 import {UserService} from "../services/user.service";
+import {SongService} from "../services/song.service";
 import {Song} from "../models/song";
 
 @Component({
     selector: 'song-add',
     templateUrl: "../views/song-add.html",
-    providers: [UserService]
+    providers: [UserService,SongService]
 })
 export class SongAddComponent implements OnInit{
     public titulo: string;
@@ -20,7 +21,8 @@ export class SongAddComponent implements OnInit{
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
-        private _userService: UserService
+        private _userService: UserService,
+        private _songService:SongService
     ){
         this.titulo="Crear nueva canción";
         this.identity=this._userService.getIdentity();
@@ -33,18 +35,18 @@ export class SongAddComponent implements OnInit{
         console.log("song add cargado");
     }
 
-   /* onSubmit(){
+   onSubmit(){
         this._route.params.forEach((params:Params)=>{
-            let artist_id= params['artist'];
-            this.album.artist=artist_id;
-            this._albumService.addAlbum(this.token,this.album).subscribe(
+            let album_id= params['album'];
+            this.song.album = album_id;
+            this._songService.addSong(this.token,this.song).subscribe(
                 response=>{
-                    if(!response.album){
+                    if(!response.song){
                         this.alertMessage="Error en el servidor";
                     }else{ 
-                        this.alertMessage="El álbum se ha creado correctamente";
-                        this.album = response.album;
-                        this._router.navigate(['/editar-album',response.album._id]);
+                        this.alertMessage="La canción se ha creado correctamente";
+                        this.song = response.song;
+                        this._router.navigate(['/editar-tema',response.song._id]);
                     }
                 },
                 error=>{
@@ -57,5 +59,5 @@ export class SongAddComponent implements OnInit{
                 }
             )
         });
-    }*/
+    }
 }
