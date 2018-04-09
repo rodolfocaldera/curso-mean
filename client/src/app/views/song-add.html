@@ -1,0 +1,15 @@
+<div class="col-lg-6" *ngIf="identity && identity.role=='ROLE_ADMIN'" >
+    <h1>{{titulo}}</h1>
+    <form #formSong="nhForm" (ngSubmit)="onSubmit()">
+        <p>
+            <label>T&iacute;tulo</label>
+            <input type="text" required [(ngModel)]="song.title" #title="ngModel" name="name" class="form-control"/>
+            <span *ngIf="!name.valid && name.touched" >El t&iacute;tulo es obligatorio</span>
+        </p>
+        <p>
+            <label>Duraci&oacute;n</label>
+            <input type="text" required [(ngModel)]="song.title" #title="ngModel" name="name" class="form-control"/>
+            <span *ngIf="!name.valid && name.touched" >El t&iacute;tulo es obligatorio</span>
+        </p>
+    </form> 
+</div>
